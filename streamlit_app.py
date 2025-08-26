@@ -56,16 +56,16 @@ if ingredients_list:
 #     current_warehouse() as wh
 # """).collect())
 
-
+#import requests
+#smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+#st.text(smoothiefroot_response)
     time_to_insert = st.button('Submit Order')
     if time_to_insert:
         session.sql(my_insert_stmt).collect()
         my_message='Your Smoothie is ordered, ' + name_on_order + '!'
         st.success(my_message, icon="✅")
 
-#import requests
-#smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-#st.text(smoothiefroot_response)
+
 
 
 
