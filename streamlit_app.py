@@ -7,63 +7,35 @@ from snowflake.snowpark.functions import col
 st.title(f":cup_with_straw: Customize Your Smoothie!")
 st.write("""Choose the fruits youw ant in your custom Smoothie!""")
 
-cnx = st.connection("snowflake")
-session = cnx.session()
+# cnx = st.connection("snowflake")
+# session = cnx.session()
 
-# option = st.selectbox(
-#     'What is your favorite fruit??',
-#     ('Banana','Strawberries','Peaches')
-# )
+# my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 
-# st.write('You selected:', option)
+# ingredients_list = st.multiselect(
+#     'Choose up to 5 ingredients:'
+#     , my_dataframe
+#     , max_selections=5
+#     )
 
-
-#session = get_active_session()
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
-# st.dataframe(data=my_dataframe, use_container_width=True)
-
-ingredients_list = st.multiselect(
-    'Choose up to 5 ingredients:'
-    , my_dataframe
-    , max_selections=5
-    )
-
-name_on_order = st.text_input('Name on Smoothie:')
-st.write('The name on your Smoothie will be: ', name_on_order)
+# name_on_order = st.text_input('Name on Smoothie:')
+# st.write('The name on your Smoothie will be: ', name_on_order)
 
 
-if ingredients_list:
-    # st.write(ingredients_list)
-    # st.text(ingredients_list)
-    ingredients_string=''
+# if ingredients_list:
+#     ingredients_string=''
 
-    for fruit_chosen in ingredients_list:
-        ingredients_string += fruit_chosen + ' '
-    # st.write(ingredients_string)
+#     for fruit_chosen in ingredients_list:
+#         ingredients_string += fruit_chosen + ' '
 
-    my_insert_stmt = """ insert into smoothies.public.ORDERS(ingredients, name_on_order)
-            values ('""" + ingredients_string + """', '"""+ name_on_order+ """')"""
-    # my_insert_stmt = """ SELECT * FROM SMOOTHIES.PUBLIC.ORDERS"""
-    # st.write(my_insert_stmt)
+#     my_insert_stmt = """ insert into smoothies.public.ORDERS(ingredients, name_on_order)
+#             values ('""" + ingredients_string + """', '"""+ name_on_order+ """')"""
 
-
-#     st.write(session.sql("""
-#     select
-#     current_user()  as user,
-#     current_role()  as role,
-#     current_database() as db,
-#     current_schema() as schema,
-#     current_warehouse() as wh
-# """).collect())
-
-#import requests
-#smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-#st.text(smoothiefroot_response)
-    time_to_insert = st.button('Submit Order')
-    if time_to_insert:
-        session.sql(my_insert_stmt).collect()
-        my_message='Your Smoothie is ordered, ' + name_on_order + '!'
-        st.success(my_message, icon="✅")
+#     time_to_insert = st.button('Submit Order')
+#     if time_to_insert:
+#         session.sql(my_insert_stmt).collect()
+#         my_message='Your Smoothie is ordered, ' + name_on_order + '!'
+#         st.success(my_message, icon="✅")
 
 
 
