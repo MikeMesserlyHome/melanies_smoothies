@@ -1,4 +1,7 @@
-name: smoothies_env
-dependencies:
-  - python=3.10
-  - streamlit
+#name: smoothies_env
+#dependencies:
+#  - python=3.10
+#  - streamlit
+#requirements.txt
+snowflake-snowpark-python
+streamlit
