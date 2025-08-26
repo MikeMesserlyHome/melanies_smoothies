@@ -5,7 +5,7 @@ from snowflake.snowpark.functions import col
 
 # Write directly to the app
 st.title(f":cup_with_straw: Customize Your Smoothie!")
-st.write("""Choose the fruits youw ant in your custom Smoothie!""")
+st.write("""Choose the fruits you want in your custom Smoothie!""")
 
 # cnx = st.connection("snowflake")
 # session = cnx.session()
