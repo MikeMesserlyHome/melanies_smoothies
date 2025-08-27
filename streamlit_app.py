@@ -7,7 +7,7 @@ from snowflake.snowpark.functions import col
 st.title(f":cup_with_straw: Customize Your Smoothie!")
 st.write("""Choose the fruits you want in your custom Smoothie!""")
 
-# cnx = st.connection("snowflake")
+cnx = st.connection("snowflake")
 # session = cnx.session()
 
 # my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
