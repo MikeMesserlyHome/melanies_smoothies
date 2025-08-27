@@ -8,6 +8,10 @@ from snowflake.snowpark.functions import col
 st.title(f":cup_with_straw: Customize Your Smoothie!")
 st.write("""Choose the fruits you want in your custom Smoothie!""")
 
+name_on_order = st.text_input('Name on Smoothie:')
+st.write('The name on your Smoothie will be: ', name_on_order)
+
+
 cnx = st.connection("snowflake")
 session = cnx.session()
 
@@ -19,8 +23,7 @@ ingredients_list = st.multiselect(
     , max_selections=5
     )
 
-name_on_order = st.text_input('Name on Smoothie:')
-st.write('The name on your Smoothie will be: ', name_on_order)
+
 
 
 if ingredients_list:
